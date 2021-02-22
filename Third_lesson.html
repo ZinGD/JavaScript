@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 3. Циклы, массивы, структуры данных</title>
+</head>
+<body>
+    
+    <script>
+    
+        
+        //------1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
+        console.log("---1 задание---");
+        var num = 0;
+        while (num <= 100) {
+            var simple = true;
+            for (var i = 2; i < num; i++) {
+                if (num % i === 0) {
+                    simple = false;
+                    break;
+                }
+            }
+            if (simple) console.log(num);
+            num++;
+        }
+        //-------------------------------------------------------
+        //
+        //
+        //------2. С этого урока начинаем работать с функционалом интернет-магазина. Предположим, есть сущность корзины. Нужно реализовать функционал подсчета стоимости корзины в зависимости от находящихся в ней товаров.
+        console.log("---2 задание---");
+        var basket = [{
+                product: "ручка.",
+                price: 10
+            },
+            {
+                product: "карандаш.",
+                price: 20
+            },
+            {
+                product: "ластик.",
+                price: 30
+            },
+            {
+                product: "тетрадь.",
+                price: 40
+            }
+        ];
+        var basketPrice = 0;
+        for (var output of basket) {
+            basketPrice += output.price;
+            console.log("Товар: " + output.product + " Стоимость составляет: " + output.price + " руб.");
+        }
+        console.log("Стоимость корзины: " + basketPrice + " руб.");
+        //-------------------------------------------------------
+        //
+        //
+        //------3. Товары в корзине хранятся в массиве. Задачи:
+        //------a) Организовать такой массив для хранения товаров в корзине;
+        //------b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.
+        console.log("---3 задание---");
+        function countBasketPrice(basket) {
+            var outputBasketPrice = 0;
+            for (var output of basket) {
+            outputBasketPrice += output.price;
+            }
+            return outputBasketPrice;
+            }
+        console.log("Стоимость корзины: " + countBasketPrice(basket) + " руб.");
+        //-------------------------------------------------------
+        //
+        //
+        //------4.*Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла. Выглядеть это должно так:
+        //------for(…){// здесь пусто}
+        console.log("---4 задание---");
+        for (var i = 0; i < 10; console.log(i++)) {}
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 6-1. Обработка событий в JavaScript</title>
+    <link rel="stylesheet" href="css/style.css"> </head>
+
+<body>
+    <div class="content">
+       <img class="gallery" src="img/small/3.jpg" alt="">
+       <img class="gallery" src="img/small/4.jpg" alt="">
+       <img class="gallery" src="img/small/5.jpg" alt="">
+        <div class="big_picture"></div>
+    </div>
+    <script>
+        function changeBigPicture(event) {
+            const bigPicture = document.querySelector(".big_picture");
+            const img = document.createElement("img");
+            img.src = event.currentTarget.src.replace("small", "big");
+            bigPicture.innerHTML = '';
+            img.onload = () => bigPicture.appendChild(img);
+            img.onerror = () => bigPicture.textContent = "404. Изображение не найдено";
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.getElementsByClassName("gallery");
+            for (const img of images) {
+                img.addEventListener("click", changeBigPicture)
+            }
+        });
+    </script>
+</body>
+
+</html>

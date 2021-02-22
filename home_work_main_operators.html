@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script> //---Задание №1---//
+    var a = 1, b = 1, c, d;
+        c = ++a; alert(c);  //Префиксная форма инкремента, выглядит как: c = 1 + a = 2;
+        d = b++; alert(d);  //Постфиксная форма инкремента возвращает старое значение b = 1;
+        c = (2+ ++a); alert(c);  // В первом примере "c = ++a;" оператор a стал равен 2. Соответственно в этом примере "c = (2+ ++a);" стало равно: c = (2+ ++2), получилось 5;
+        d = (2+ b++); alert(d);  // Во втором примере "d = b++;" оператор b стал равен 1. Соответственно в этом примере "d = (2+ b++);" стало равно: d = (2+ 1++), получилось 4;
+        alert(a);  // В первом примере "c = ++a;" оператор a стал равен 2. В третьем примере "c = (2+ ++a)" так как к оператору a прибавили 2 единицы, оператор a стал равен 3;
+        alert(b);  // Во втором примере "d = b++;" оператор b стал равен 1. В четвертом примере "d = (2+ b++);" так как к оператору b прибавили 2 единицы, оператор b стал равен 3;
+    </script>
+    
+    <script> //---Задание №2---//
+        var a = 2;
+        var x = 1 + (a *= 2);  //Развернутый пример выражения: x = 1 + (a * 2 = a). x = 1 + 4; Получается x равен 5;
+    </script>
+    
+    <script> //---Задание №3---//
+        var a = +prompt("Введите первое число");
+        var b = +prompt("Введите второе число");
+        if(a > 0 && b > 0){
+            c = a - b;
+            alert(a +" - " + b +" получается " + c);
+            }
+            else if(a < 0 && b < 0){
+                c = a * b;
+                alert(a +" умножить на " + b +" получается: " + c);
+            }
+            else if(a < 0 && b > 0 || a > 0 && b < 0){
+                c = a + b;
+                alert(a +" + " + b +" получается: " + c);
+            }
+    </script>
+    
+    <script> //---Задание №4---//
+		a = +prompt("Введите число от 0 до 15");
+		switch(a) {
+        case 0:
+			alert("Ваше число 0");
+			break;
+		case 1:
+			alert("Ваше число 1");
+			break;
+		case 2:
+			alert("Ваше число 2");
+			break;
+		case 3:
+			alert("Ваше число 3");
+			break;
+		case 4:
+			alert("Ваше число 4");
+			break;
+		case 5:
+			alert("Ваше число 5");
+			break;
+		case 6:
+			alert("Ваше число 6");
+			break;
+		case 7:
+			alert("Ваше число 7");
+			break;
+		case 8:
+			alert("Ваше число 8");
+			break;
+		case 9:
+			alert("Ваше число 9");
+			break;
+		case 10:
+			alert("Ваше число 10");
+			break;
+		case 11:
+			alert("Ваше число 11");
+			break;
+		case 12:
+			alert("Ваше число 12");
+			break;
+		case 13:
+			alert("Ваше число 13");
+			break;
+		case 14:
+			alert("Ваше число 14");
+			break;
+		case 15:
+			alert("Ваше число 15");
+			break;	
+		}	
+	</script>
+	
+    <script> //---Задание №5---//
+		var a = 9;
+		var b = 4;
+
+		function plus(a, b) {
+    		return a + b;
+		}
+
+		function minus(a, b) {
+    		return a - b;
+		}
+
+		function div (a, b) {
+    		return a / b;
+		}
+
+		function mult (a, b) {
+    		return a + b;
+		}
+	</script>
+	
+    <script> //---Задание №6---//
+		function mathOperation(arg1, arg2, operation){
+            switch(operation){
+       	        case "Сложение":
+           	        return arg1 + arg2;
+           	        break;
+       	        case "Вычитание":
+           	        return arg1 - arg2;
+                    break;
+                case "Деление":
+                    return arg1 / arg2;
+                    break;
+       	        case "Умножение":
+           	        return arg1 * arg2;
+                    break;
+   				}
+		}
+	</script>
+</body>
+</html>
