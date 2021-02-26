@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 6-2. Обработка событий в JavaScript</title>
+    <link rel="stylesheet" href="css/style.css"> </head>
+
+<body>
+    <div id="container">
+        <div id="showcase"></div>
+        <div id="cart">
+            <div class="cart-info">
+                <h3>
+                Общая стоимость:
+                <span id="cart-total-price">0 $</span>
+            </h3> </div>
+            <div class="cart-info">
+                <h3>
+                Товаров в корзине:
+                <span id="cart-count">0</span>
+            </h3> </div>
+            <ol id="cart-list"></ol>
+        </div>
+    </div>
+    <script>
+        // Массив товаров
+        const cars = [
+            {
+                id: "1"
+                , name: "Nissan GT-R"
+                , price: 120990
+                , pict: "./img/nissan_gtr.jpg"
+            }
+            , {
+                id: "2"
+                , name: "Porsche Panamera"
+                , price: 232500
+                , pict: "./img/porsche_panamera.jpg"
+            }
+            , {
+                id: "3"
+                , name: "Mercedes E63 AMG"
+                , price: 100900
+                , pict: "./img/mercedes_e63_amg.jpg"
+            }
+            , {
+                id: "4"
+                , name: "Lamborghini Aventador"
+                , price: 1401000
+                , pict: "./img/lamborghini_aventador.jpg"
+            }
+            , {
+                id: "5"
+                , name: "BMW M8"
+                , price: 90995
+                , pict: "./img/bmw_m8.jpg"
+            }
+            , {
+                id: "6"
+                , name: "Audi R8"
+                , price: 380000
+                , pict: "./img/audi_r8.jpg"
+            }
+];
+        const showCase = document.getElementById("showcase");
+        // Работа с отображением товаров
+        for (const car of cars) {
+            const box = document.createElement("div");
+            const img = document.createElement("img");
+            const btn = document.createElement("button");
+            const h3 = document.createElement("h3");
+            const p = document.createElement("p");
+            p.textContent = `${car.price.toLocaleString("ru-RU", {style: "currency", currency: "USD"})}`;
+            h3.textContent = `${car.name}`;
+            btn.id = car.id;
+            img.src = `${car.pict}`;
+            img.alt = `${car.name}`;
+            box.classList.add("box");
+            box.appendChild(img);
+            box.appendChild(btn);
+            box.appendChild(h3);
+            box.appendChild(p);
+            showCase.appendChild(box);
+        }
+        const buttonAdd = document.querySelectorAll(".box > button");
+        const cartCount = document.getElementById("cart-count");
+        const cartTotalPrice = document.getElementById("cart-total-price");
+        const shoppingList = document.getElementById("cart-list");
+        let totalPrice = 0;
+        let totalItems = 0;
+        // Обработка события добавления в корзину
+        function addToCart(event) {
+            const car = cars.filter(car => car.id === this.id)[0];
+            totalItems++;
+            totalPrice += car.price;
+            cartCount.textContent = totalItems;
+            cartTotalPrice.textContent = totalPrice.toLocaleString("ru-RU", {
+                style: "currency"
+                , currency: "USD"
+            });
+            const purchase = document.createElement("li");
+            purchase.textContent = `${car.name} - ${car.price.toLocaleString("ru-RU", {style: "currency", currency: "USD"})}`;
+            console.log(purchase);
+            shoppingList.appendChild(purchase);
+        }
+        // Прослушивание добавления в корзину
+        for (let btn of buttonAdd) {
+            btn.addEventListener("click", addToCart);
+        }
+    </script>
+</body>
+
+</html>
